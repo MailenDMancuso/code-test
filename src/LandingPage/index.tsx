@@ -26,7 +26,6 @@ const LandingPage = () => {
   /** This method is in charge of t=retrieving the list of users from the correspodig url */
   const getUsersDetailsData = async () => {
     setLoading(true);
-
     try {
       const response = await getUsersDetails();
       const data = await response.json();
@@ -65,9 +64,10 @@ const LandingPage = () => {
   };
 
   const onClickHandler = (order: string) => {
-    setFilteredUsersDetails(order === ASC ?
-      [...filteredUsersDetails.sort((a, b) => a.name.first.localeCompare(b.name.first))] :
-      [...filteredUsersDetails.sort((a, b) => b.name.first.localeCompare(a.name.first))]
+    setFilteredUsersDetails(
+      [...filteredUsersDetails.sort((a, b) =>
+        order === ASC ? a.name.first.localeCompare(b.name.first) : b.name.first.localeCompare(a.name.first)
+      )]
     );
   };
 
