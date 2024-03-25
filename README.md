@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Southteams' code challenge
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 The usage of this projects belong to the Southteams' code challenge.
