@@ -16,6 +16,9 @@ Include following functionality in the list:
 
 In the project directory, you can run:
 
+### `npm install`
+for installing dependencies
+
 ### `npm start`
 
 Runs the app in the development mode.\
