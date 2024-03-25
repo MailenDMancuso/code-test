@@ -23,7 +23,7 @@ const LandingPage = () => {
   const [partialSearchedUser, setPartialSearchedUser] = useState('');
   const [isEditingUser, setEditingUser] = useState('');
 
-  /** This method is in charge of t=retrieving the list of users from the correspodig url */
+  /** This method is in charge of retrieving the list of users from the correspodig url */
   const getUsersDetailsData = async () => {
     setLoading(true);
     try {
@@ -56,13 +56,12 @@ const LandingPage = () => {
     setPartialFilteredUsers();
   }, [partialSearchedUser, usersDetails]);
 
-  // TODO lists:
-  // paginate
-
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartialSearchedUser(event.target.value.toLowerCase());
   };
 
+
+  /** This method is in charge of ordering the list of users by ASC or DESC order*/
   const onClickHandler = (order: string) => {
     setFilteredUsersDetails(
       [...filteredUsersDetails.sort((a, b) =>
@@ -75,6 +74,7 @@ const LandingPage = () => {
     setEditingUser(id);
   }
 
+  /** This method is in charge of updating the list of users on the local state */
   const onSaveUserDetails = (userDetailsUpdated: any) => {
     setUsersDetails(prevState => prevState.map(el => (el.id.value === userDetailsUpdated.id.value ? { ...el, ...userDetailsUpdated } : el)))
     setFilteredUsersDetails(prevState => prevState.map(el => (el.id.value === userDetailsUpdated.id.value ? { ...el, ...userDetailsUpdated } : el)));
