@@ -71,7 +71,6 @@ const UserCard = ({ user, isEditingUser, onClick, onSave, onCancelEditing }: {
               type="button"
               style={{ backgroundColor: 'red', marginRight: '10px' }}
               onClick={onCancelEditing}
-              disabled={!user.email || !user.phone}
             >
               Cancel
             </button>
