@@ -5,10 +5,15 @@
   border: 1px solid gray;
   border-radius: 5px;
   padding: 5px;
-  color: gray;
+  color: #406DFF;
 
   &:hover {
     color: black;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  &:disabled {
+    color: gray;
+    cursor: not-allowed;
   }
 }

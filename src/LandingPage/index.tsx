@@ -22,6 +22,7 @@ const LandingPage = () => {
   const [filteredUsersDetails, setFilteredUsersDetails] = useState<UserDetails[]>([]);
   const [partialSearchedUser, setPartialSearchedUser] = useState('');
   const [isEditingUser, setEditingUser] = useState('');
+  const [sortingOrder, setSortingOrder] = useState('');
 
   /** This method is in charge of retrieving the list of users from the correspodig url */
   const getUsersDetailsData = async () => {
@@ -67,6 +68,7 @@ const LandingPage = () => {
         order === ASC ? a.name.first.localeCompare(b.name.first) : b.name.first.localeCompare(a.name.first)
       )]
     );
+    setSortingOrder(order);
   };
 
   const onUserCardClick = (id: string) => {
@@ -91,8 +93,8 @@ const LandingPage = () => {
         <>
           <SearchBar value={partialSearchedUser} onChangeHandler={onChangeHandler} />
           Sort users by name in:
-          <SortigOption label="Ascending Order" onClickHandler={() => onClickHandler(ASC)} />
-          <SortigOption label="Descending Order" onClickHandler={() => onClickHandler(DESC)} />
+          <SortigOption label="Ascending Order" disableOption={sortingOrder === ASC} onClickHandler={() => onClickHandler(ASC)} />
+          <SortigOption label="Descending Order" disableOption={sortingOrder === DESC} onClickHandler={() => onClickHandler(DESC)} />
           <div className='users-container'>
             {filteredUsersDetails.map(user => (
               <UserCard
