@@ -21,7 +21,7 @@ const LandingPage = () => {
   const [usersDetails, setUsersDetails] = useState<UserDetails[]>([]);
   const [filteredUsersDetails, setFilteredUsersDetails] = useState<UserDetails[]>([]);
   const [partialSearchedUser, setPartialSearchedUser] = useState('');
-  const [isEditingUser, setEditingUser] = useState('');
+  const [isEditingUser, setEditingUser] = useState({ name: '', value: '' });
   const [sortingOrder, setSortingOrder] = useState('');
 
   /** This method is in charge of retrieving the list of users from the correspodig url */
@@ -71,19 +71,22 @@ const LandingPage = () => {
     setSortingOrder(order);
   };
 
-  const onUserCardClick = (id: string) => {
-    setEditingUser(id);
+  const onUserCardClick = (name: string, value: string) => {
+    setEditingUser({
+      name,
+      value
+    });
   }
 
   /** This method is in charge of updating the list of users on the local state */
   const onSaveUserDetails = (userDetailsUpdated: any) => {
     setUsersDetails(prevState => prevState.map(el => (el.id.value === userDetailsUpdated.id.value ? { ...el, ...userDetailsUpdated } : el)))
     setFilteredUsersDetails(prevState => prevState.map(el => (el.id.value === userDetailsUpdated.id.value ? { ...el, ...userDetailsUpdated } : el)));
-    setEditingUser('');
+    setEditingUser({ name: '', value: '' });
   };
 
   const onCancelEditing = () => {
-    setEditingUser('');
+    setEditingUser({ name: '', value: '' });
   }
 
   return (
@@ -100,7 +103,7 @@ const LandingPage = () => {
               <UserCard
                 key={user.login.uuid}
                 user={user}
-                isEditingUser={isEditingUser === user.id.value}
+                isEditingUser={isEditingUser.name === user.id.name && isEditingUser.value === user.id.value}
                 onClick={onUserCardClick}
                 onSave={onSaveUserDetails}
                 onCancelEditing={onCancelEditing}
