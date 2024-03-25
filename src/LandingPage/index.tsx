@@ -60,7 +60,6 @@ const LandingPage = () => {
     setPartialSearchedUser(event.target.value.toLowerCase());
   };
 
-
   /** This method is in charge of ordering the list of users by ASC or DESC order*/
   const onClickHandler = (order: string) => {
     setFilteredUsersDetails(
