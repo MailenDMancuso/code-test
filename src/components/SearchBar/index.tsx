@@ -7,8 +7,7 @@ import './searchBarStyles.scss';
 const SearchBar = ({ value, onChangeHandler }: { value: string; onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void }) => (
   <div className='search-bar-container'>
     Search users by name or email:
-    <input type="text" defaultValue={value} placeholder="Search..." onChange={onChangeHandler}>
-    </input>
+    <input type="text" defaultValue={value} placeholder="Search..." onChange={onChangeHandler} />
   </div>
 );
 

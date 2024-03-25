@@ -27,7 +27,7 @@ test('Renders the main Landing Page title', () => {
     }
   }
 
-  render(<UserCard user={user} onClick={() => { }} />);
+  render(<UserCard user={user} isEditingUser={false} onClick={() => { }} onSave={() => { }} onCancelEditing={() => { }} />);
   const userEmail = screen.getByText('testingemail@test.com');
   expect(userEmail).toBeInTheDocument();
 });

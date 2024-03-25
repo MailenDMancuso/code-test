@@ -21,7 +21,7 @@ const LandingPage = () => {
   const [usersDetails, setUsersDetails] = useState<UserDetails[]>([]);
   const [filteredUsersDetails, setFilteredUsersDetails] = useState<UserDetails[]>([]);
   const [partialSearchedUser, setPartialSearchedUser] = useState('');
-  const [editingUser, setEditingUser] = useState(false);
+  const [isEditingUser, setEditingUser] = useState('');
 
   /** This method is in charge of t=retrieving the list of users from the correspodig url */
   const getUsersDetailsData = async () => {
@@ -57,7 +57,7 @@ const LandingPage = () => {
   }, [partialSearchedUser, usersDetails]);
 
   // TODO lists:
-  // update - local state
+  // paginate
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartialSearchedUser(event.target.value.toLowerCase());
@@ -71,8 +71,18 @@ const LandingPage = () => {
     );
   };
 
-  const onUserCardClick = (user: UserDetails) => {
-    setEditingUser(true);
+  const onUserCardClick = (id: string) => {
+    setEditingUser(id);
+  }
+
+  const onSaveUserDetails = (userDetailsUpdated: any) => {
+    setUsersDetails(prevState => prevState.map(el => (el.id.value === userDetailsUpdated.id.value ? { ...el, ...userDetailsUpdated } : el)))
+    setFilteredUsersDetails(prevState => prevState.map(el => (el.id.value === userDetailsUpdated.id.value ? { ...el, ...userDetailsUpdated } : el)));
+    setEditingUser('');
+  };
+
+  const onCancelEditing = () => {
+    setEditingUser('');
   }
 
   return (
@@ -86,7 +96,14 @@ const LandingPage = () => {
           <SortigOption label="Descending Order" onClickHandler={() => onClickHandler(DESC)} />
           <div className='users-container'>
             {filteredUsersDetails.map(user => (
-              <UserCard key={user.login.uuid} user={user} onClick={onUserCardClick} />
+              <UserCard
+                key={user.login.uuid}
+                user={user}
+                isEditingUser={isEditingUser === user.id.value}
+                onClick={onUserCardClick}
+                onSave={onSaveUserDetails}
+                onCancelEditing={onCancelEditing}
+              />
             ))}
           </div>
         </>

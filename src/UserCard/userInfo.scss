@@ -3,13 +3,27 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 6px;
 
-  button {
-    border: none;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
+  .action-container {
+    padding-bottom: 15px;
+    text-align: right;
+    padding-right: 20px;
+
+    button {
+      border: none;
+      height: 100%;
+      background: #406DFF;
+      opacity: 0.5;
+      cursor: pointer;
+      width: 85px;
+      padding: 5px;
+      color: white;
+      border-radius: 4px;
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: gray !important;
+      }
+    }
   }
 
   .background-container {
@@ -45,6 +59,14 @@
     height: 120px;
     padding-top: 100px;
     text-align: center;
+
+    input {
+      border: 1px solid gray;
+      border-radius: 5px;
+      height: 20px;
+      width: 85%;
+      margin-bottom: 15px;
+    }
   }
 
   .subtitle-detail {
