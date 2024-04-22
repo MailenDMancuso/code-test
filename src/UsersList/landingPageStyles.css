@@ -8,6 +8,6 @@
   margin-top: 40px;
   display: flex;
   gap: 60px;
-  flex-flow: row wrap;
+  flex-flow: wrap;
   justify-content: center;
 }

@@ -8,12 +8,15 @@
   color: #406DFF;
 
   &:hover {
-    color: black;
+    border-color: red;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   &:disabled {
-    color: gray;
+    color: black;
     cursor: not-allowed;
+    background-color: lightgray;
+    opacity: 0.5;
+    border-color: gray;
   }
 }

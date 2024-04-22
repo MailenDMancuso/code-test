@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
 /** Utils */
-import { UserDetails } from '../../utils/interfaces';
+import { UserDetails } from '../../common/interfaces';
 
-/** Component for editing user's info and update the UI on the local state */
-const UserEditingSection = ({ user, onSave, onCancelEditing }: {
+interface UserEditingSectionProps {
   user: UserDetails,
   onSave: (userDetailsUpdated: {
     id: {
@@ -14,7 +13,10 @@ const UserEditingSection = ({ user, onSave, onCancelEditing }: {
     phone: string
   }) => void,
   onCancelEditing: () => void,
-}) => {
+}
+
+/** Component for editing user's info and update the UI on the local state */
+const UserEditingSection = ({ user, onSave, onCancelEditing }: UserEditingSectionProps) => {
   const [userEditedDetails, setUserDetails] = useState({
     id: {
       value: user.id.value,
@@ -23,10 +25,10 @@ const UserEditingSection = ({ user, onSave, onCancelEditing }: {
     phone: user.phone,
   });
 
-  const editUserDetails = (value: string, key: string) => {
+  const editUserDetails = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserDetails({
       ...userEditedDetails,
-      [key]: value,
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -35,9 +37,10 @@ const UserEditingSection = ({ user, onSave, onCancelEditing }: {
   }
 
   return (
-    <>
-      <input type="text" defaultValue={user.email} onChange={e => editUserDetails(e.target.value, 'email')} />
-      <input type="text" defaultValue={user.phone} onChange={e => editUserDetails(e.target.value, 'phone')} />
+    <form onSubmit={saveUserDetails}>
+      {(!userEditedDetails.email || !userEditedDetails.phone) && 'All fields are mandatory'}
+      <input name="email" type="text" defaultValue={user.email} onChange={(e) => editUserDetails(e)} />
+      <input name="phone" type="text" defaultValue={user.phone} onChange={(e) => editUserDetails(e)} />
       <div className="action-container">
         <>
           <button
@@ -48,16 +51,15 @@ const UserEditingSection = ({ user, onSave, onCancelEditing }: {
             Cancel
           </button>
           <button
-            type="button"
+            type="submit"
             style={{ backgroundColor: 'green' }}
-            onClick={saveUserDetails}
             disabled={!userEditedDetails.email || !userEditedDetails.phone}
           >
             Save details
           </button>
         </>
       </div>
-    </>
+    </form>
   );
 };
 
