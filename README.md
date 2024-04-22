@@ -1,7 +1,6 @@
-# Southteams' code challenge
+# Code challenge
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-The usage of this projects belong to the Southteams' code challenge.
 
 ## Feature Description
 Create a React application that will load a list of users from this api https://randomuser.me/

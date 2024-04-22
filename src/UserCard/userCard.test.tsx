@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import UserCard from './';
+import UserCard from '.';
 
 test('Renders the main Landing Page title', () => {
   const user = {

@@ -1,19 +1,18 @@
 import React from 'react';
 
 /** Utils */
-import { UserDetails } from '../utils/interfaces';
+import { UserDetails } from '../common/interfaces';
 
 /** Components */
 import UserEditingSection from '../components/UserEditingSection';
 
 /** Styles */
-import './userInfo.scss';
+import './userInfo.css';
 
-/** User card component for displaying the user's details on UI card */
-const UserCard = ({ user, isEditingUser, onClick, onSave, onCancelEditing }: {
+interface UserCardProps {
   user: UserDetails,
   isEditingUser: boolean,
-  onClick: (name: string, value: string) => void,
+  onClick: (uuid: string) => void,
   onSave: (userDetailsUpdated: {
     id: {
       value: string,
@@ -22,7 +21,10 @@ const UserCard = ({ user, isEditingUser, onClick, onSave, onCancelEditing }: {
     phone: string
   }) => void,
   onCancelEditing: () => void,
-}) => {
+}
+
+/** User card component for displaying the user's details on UI card */
+const UserCard = ({ user, isEditingUser, onClick, onSave, onCancelEditing }: UserCardProps) => {
   return (
     <div className="user-details">
       <div className="background-container">
@@ -52,7 +54,7 @@ const UserCard = ({ user, isEditingUser, onClick, onSave, onCancelEditing }: {
         {!isEditingUser &&
           <button
             type="button"
-            onClick={() => onClick(user.id.name, user.id.value)}
+            onClick={() => onClick(user.login.uuid)}
           >
             Edit details
           </button>
