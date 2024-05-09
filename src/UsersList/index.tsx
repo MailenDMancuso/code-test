@@ -77,6 +77,7 @@ const UsersList = () => {
     setEditingUser(userId);
   }
 
+
   /** This method is in charge of updating the list of users on the local state */
   const onSaveUserDetails = (userDetailsUpdated: any) => {
     setUsersDetails(prevState =>
