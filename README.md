@@ -1,6 +1,6 @@
 # Description
 
-### nvm use 16.19.0
+### nvm use 16.19.0 or higher
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

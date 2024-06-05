@@ -126,17 +126,21 @@ const UsersList = () => {
             value={partialSearchedUser}
             onChangeHandler={onSearchingChangeHandler}
           />
-          Sort users by name in:
-          <SortingOption
-            label="Ascending Order"
-            disableOption={sortingOrder === options.ASC}
-            onClickHandler={() => onClickHandler(options.ASC)}
-          />
-          <SortingOption
-            label="Descending Order"
-            disableOption={sortingOrder === options.DESC}
-            onClickHandler={() => onClickHandler(options.DESC)}
-          />
+          <div className="buttons-wrapper">
+            <div>Sort users by name in:</div>
+            <div>
+              <SortingOption
+                label="Ascending Order"
+                disableOption={sortingOrder === options.ASC}
+                onClickHandler={() => onClickHandler(options.ASC)}
+              />
+              <SortingOption
+                label="Descending Order"
+                disableOption={sortingOrder === options.DESC}
+                onClickHandler={() => onClickHandler(options.DESC)}
+              />
+            </div>
+          </div>
           <div className="users-container">
             {filteredUsersDetails.map((user: UserDetails) => (
               <UserCard
