@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 /** Styles */
-import './sortingButton.css';
+import "./sortingButton.css";
 
 interface SortingOptionProps {
   label: string;
@@ -10,8 +10,18 @@ interface SortingOptionProps {
 }
 
 /** Sorting Component for managing the users' list sorting, based on name field */
-const SortingOption = ({ label, disableOption, onClickHandler }: SortingOptionProps) => (
-  <button type="button" className="sorting-button" disabled={disableOption} onClick={onClickHandler}>
+const SortingOption = ({
+  label,
+  disableOption,
+  onClickHandler,
+}: SortingOptionProps) => (
+  <button
+    data-testid={`sorting-${label}`}
+    type="button"
+    className="sorting-button"
+    disabled={disableOption}
+    onClick={onClickHandler}
+  >
     {label}
   </button>
 );

@@ -1,12 +1,16 @@
-# Code challenge
+# Description
+
+### nvm use 16.19.0
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Feature Description
+
 Create a React application that will load a list of users from this api https://randomuser.me/
 Store the result of the request and display the information in a grid of cards.
 
 Include following functionality in the list:
+
 - A search bar that will filter the list based on the user input.
 - Ability to sort the list by the information on the fields.
 - Ability to edit a list item and have the card update with the new information (only in local state not through the api)
@@ -16,6 +20,7 @@ Include following functionality in the list:
 In the project directory, you can run:
 
 ### `npm install`
+
 for installing dependencies
 
 ### `npm start`

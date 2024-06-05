@@ -1,26 +1,27 @@
-import React from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import React from "react";
+import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
 
 /** Components */
-import UsersList from '../UsersList';
+import UsersList from "../UsersList";
 
 const Home = () => {
-  return (
-    <div>Home Page</div>
-  );
-}
+  return <div>Home Page</div>;
+};
 
 const LandingPage = () => {
   return (
-    <div className='main-container'>
-      <h1 style={{ color: 'lightblue' }}>Welcome to the Code Test</h1>
-      <BrowserRouter>
-        <Switch>
+    <BrowserRouter>
+      <Switch>
+        <div className="main-container">
+          <h1 style={{ color: "lightblue", textAlign: "center", margin: 40 }}>
+            Welcome!
+          </h1>
           <Route exact path="/" component={Home} />
           <Route path="/users/" component={UsersList} />
-        </Switch>
-      </BrowserRouter>
-    </div>
+          <Link to="/users/">Go to the users view</Link>
+        </div>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
