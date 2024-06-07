@@ -67,6 +67,7 @@ const UsersList = () => {
     setPartialFilteredUsers();
   }, [partialSearchedUser, usersDetails]);
 
+  /** Handler for changing seacrh input */
   const onSearchingChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -89,25 +90,27 @@ const UsersList = () => {
     setSortingOrder(order);
   };
 
+  /** Handler for selecting one car for editing user details */
   const onUserCardClick = (userId: string) => {
     setEditingUser(userId);
   };
 
   /** This method is in charge of updating the list of users on the local state */
   const onSaveUserDetails = (userDetailsUpdated: any) => {
+    const updateUserDetails = (
+      elem: { id: { value: string } },
+      userDetailsUpdated: any
+    ) => {
+      return elem.id.value === userDetailsUpdated.id.value
+        ? { ...elem, ...userDetailsUpdated }
+        : elem;
+    };
+
     setUsersDetails((prevState) =>
-      prevState.map((el) =>
-        el.id.value === userDetailsUpdated.id.value
-          ? { ...el, ...userDetailsUpdated }
-          : el
-      )
+      prevState.map((el) => updateUserDetails(el, userDetailsUpdated))
     );
     setFilteredUsersDetails((prevState) =>
-      prevState.map((el) =>
-        el.id.value === userDetailsUpdated.id.value
-          ? { ...el, ...userDetailsUpdated }
-          : el
-      )
+      prevState.map((el) => updateUserDetails(el, userDetailsUpdated))
     );
     setEditingUser("");
   };
